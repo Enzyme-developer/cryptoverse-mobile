@@ -6,7 +6,6 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Nav />
-      <Text>Hello React Nativee!</Text>
       <StatusBar style="dark" />
     </SafeAreaView>
   );
