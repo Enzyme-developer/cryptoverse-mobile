@@ -4,49 +4,63 @@ import {
   TextInput,
   View,
   StyleSheet,
+  Button,
 } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebaseConfig'
+import { auth } from "../firebaseConfig";
 import { useState } from "react";
 
 const Signup = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState("");
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(userCredential);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+  const handleSignup = () => {
+    setLoading(true);
+    if (!email && !password) {
+      setError("Email & Password is required");
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(error.message);
+        setLoading(false);
+      });
+  };
 
   return (
     <View>
       <Text>Signup</Text>
+
       <TextInput
         style={styles.input}
         value={email}
-        onChangeText={(e: any) => setEmail(e.target.value)}
+        onChangeText={(text) => setEmail(text)}
         placeholder="johndoe@gmail.com"
         inputMode="email"
       />
 
       <TextInput
         style={styles.input}
-        value={email}
-        onChangeText={(e: any) => setPassword(e.target.value)}
+        value={password}
+        onChangeText={(password) => setPassword(password)}
         placeholder="******"
         secureTextEntry={true}
       />
 
-      <ActivityIndicator size="small" color="#0000ff" />
+      <Button title="Signup" onPress={handleSignup} />
+
+      {error && <Text>{error}</Text>}
+
+      {loading && <ActivityIndicator size="small" color="#0000ff" />}
     </View>
   );
 };

@@ -10,24 +10,36 @@ import {
 import { useState } from "react";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import SigninWithGoogle from "../components/SigninWithGoogle";
 
 const Auth = () => {
-  
-  const [tab, setTab] = useState("login");
+  const [tab, setTab] = useState("");
 
   return (
     <View>
-      <View style={styles.nav}>{tab == "login" ? <Login /> : <Signup />}</View>
+      <View style={styles.nav}>
+        {tab == "login" ? (
+          <Login />
+        ) : tab == "signup" ? (
+          <Signup />
+        ) : (
+          <SigninWithGoogle />
+        )}
+      </View>
       <View>
         {tab == "login" ? (
           <View>
             <Text>Do not have an account?</Text>
-            <Button title="Signup" onPress={() => setTab("signUp")} />
+            <Button title="Signup" onPress={() => setTab("signup")} />
           </View>
-        ) : (
+        ) : tab == "signup" ? (
           <View>
             <Text>Already have an account?</Text>
             <Button title="Login" onPress={() => setTab("login")} />
+          </View>
+        ) : (
+          <View>
+            <Button title="gooooooooogle" />
           </View>
         )}
       </View>
