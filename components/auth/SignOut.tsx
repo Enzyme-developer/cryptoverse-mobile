@@ -3,17 +3,17 @@ import { Pressable, Text, View, StyleSheet } from "react-native";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 
-const SignOut = ({children}: any) => {
-
-  const signout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("successfully signed out");
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
+const SignOut = ({ children }: any) => {
+  const signout = async () => {
+    try {
+      const logout = await signOut(auth);
+      console.log(logout);
+      console.log("successfully signed out");
+    } catch (error: any) {
+      console.log(error);
+    }
   };
+
   return (
     <View style={styles.container}>
       <Pressable onPress={signout}>
