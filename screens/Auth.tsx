@@ -6,40 +6,33 @@ import {
   SafeAreaView,
   Touchable,
   Button,
+  Pressable,
 } from "react-native";
 import { useState } from "react";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
-import SigninWithGoogle from "../components/SigninWithGoogle";
 
 const Auth = () => {
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("login");
 
   return (
-    <View>
-      <View style={styles.nav}>
-        {tab == "login" ? (
-          <Login />
-        ) : tab == "signup" ? (
-          <Signup />
-        ) : (
-          <SigninWithGoogle />
-        )}
-      </View>
+    <View style={styles.container}>
+      <View style={styles.tab}>{tab == "login" ? <Login /> : <Signup />}</View>
+
       <View>
         {tab == "login" ? (
           <View>
             <Text>Do not have an account?</Text>
-            <Button title="Signup" onPress={() => setTab("signup")} />
-          </View>
-        ) : tab == "signup" ? (
-          <View>
-            <Text>Already have an account?</Text>
-            <Button title="Login" onPress={() => setTab("login")} />
+            <Pressable onPress={() => setTab("signup")} style={styles.pressed}>
+              <Text style={styles.buttonText}>Signup</Text>
+            </Pressable>
           </View>
         ) : (
           <View>
-            <Button title="gooooooooogle" />
+            <Text>Already have an account?</Text>
+            <Pressable onPress={() => setTab("login")} style={styles.pressed}>
+              <Text style={styles.buttonText}>Login</Text>
+            </Pressable>
           </View>
         )}
       </View>
@@ -48,23 +41,31 @@ const Auth = () => {
 };
 
 const styles = StyleSheet.create({
-  nav: {
+  tab: {
     flexDirection: "row",
-    marginTop: 60,
-    marginHorizontal: 20,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  logo: {
-    fontSize: 20,
-    fontWeight: "600",
+  container: {
+    display: "flex",
+    width: "100%",
+    minHeight: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  user: {
-    width: 40,
-    height: 40,
-    resizeMode: "stretch",
+  pressed: {
+    backgroundColor: "blue",
+    paddingVertical: 10,
+    paddingHorizontal: 25,
     borderRadius: 5,
+    marginVertical: 20,
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "500",
+    fontSIze: 20,
+    textAlign: "center",
   },
 });
 

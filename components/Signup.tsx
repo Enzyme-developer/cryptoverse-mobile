@@ -5,6 +5,7 @@ import {
   View,
   StyleSheet,
   Button,
+  Pressable,
 } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
@@ -29,16 +30,14 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
         setError(error.message);
         setLoading(false);
       });
   };
 
   return (
-    <View>
-      <Text>Signup</Text>
+    <View style={styles.container}>
+      <Text style={styles.heading}>Signup</Text>
 
       <TextInput
         style={styles.input}
@@ -56,9 +55,12 @@ const Signup = () => {
         secureTextEntry={true}
       />
 
-      <Button title="Signup" onPress={handleSignup} />
+      {/* <Button title="Signup" onPress={handleSignup} /> */}
+      <Pressable onPress={handleSignup} style={styles.pressed}>
+        <Text style={styles.buttonText}>Signup</Text>
+      </Pressable>
 
-      {error && <Text>{error}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
 
       {loading && <ActivityIndicator size="small" color="#0000ff" />}
     </View>
@@ -66,11 +68,46 @@ const Signup = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  heading: {
+    fontSize: 24,
+    margin: 20,
+    fontWeight: "600",
+    textAlign: "center",
+  },
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    margin: 15,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 5,
+    paddingHorizontal: 10,
+    minWidth: "100%",
+  },
+  pressed: {
+    backgroundColor: "blue",
+    width: '100%',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    marginVertical: 20
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "500",
+    fontSIze: 20,
+    textAlign: 'center',
+  },
+  error: {
+    textAlign: "center",
+    color: "red",
+    fontWeight: "400",
+    marginVertical:10
   },
 });
 

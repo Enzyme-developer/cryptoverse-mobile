@@ -8,7 +8,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <Auth />
-      <Nav />
+      {/* <Nav /> */}
     </SafeAreaView>
   );
 }
@@ -16,6 +16,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: "#fff",
+    minHeight: '100%',
+    minWidth: '100%'
   },
 });
