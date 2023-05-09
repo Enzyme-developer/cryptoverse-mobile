@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  Pressable,
+} from "react-native";
 import React from "react";
+import Signout from "../auth/SignOut";
 
 const Nav = () => {
   return (
@@ -9,7 +17,14 @@ const Nav = () => {
           <Text style={styles.logo}>Jobify</Text>
         </View>
         <View>
-          <Image style={styles.user} source={require("../assets/avatar.png")} />
+          <Signout>
+            <Pressable>
+              <Image
+                style={styles.user}
+                source={require("../assets/avatar.png")}
+              />
+            </Pressable>
+          </Signout>
         </View>
       </View>
     </SafeAreaView>
@@ -19,8 +34,7 @@ const Nav = () => {
 const styles = StyleSheet.create({
   nav: {
     flexDirection: "row",
-    marginTop: 60,
-    marginHorizontal: 20,
+    marginTop: 40,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "space-between",

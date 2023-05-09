@@ -1,28 +1,28 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
 import {
-  Text,
-  View,
-  TextInput,
   ActivityIndicator,
+  Text,
+  TextInput,
+  View,
   StyleSheet,
   Button,
   Pressable,
 } from "react-native";
-import { auth } from "../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+import { useState } from "react";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState("");
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     setLoading(true);
     if (!email && !password) {
       setError("Email & Password is required");
     }
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Login</Text>
+      <Text style={styles.heading}>Signup</Text>
 
       <TextInput
         style={styles.input}
@@ -50,17 +50,18 @@ const Login = () => {
       <TextInput
         style={styles.input}
         value={password}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={(password) => setPassword(password)}
         placeholder="******"
         secureTextEntry={true}
       />
 
-      {/* <Button title="Login" onPress={handleLogin} /> */}
-      <Pressable onPress={handleLogin} style={styles.pressed}>
-        <Text style={styles.buttonText}>Login</Text>
+      {/* <Button title="Signup" onPress={handleSignup} /> */}
+      <Pressable onPress={handleSignup} style={styles.pressed}>
+        <Text style={styles.buttonText}>Signup</Text>
       </Pressable>
 
       {error && <Text style={styles.error}>{error}</Text>}
+
       {loading && <ActivityIndicator size="small" color="#0000ff" />}
     </View>
   );
@@ -90,24 +91,24 @@ const styles = StyleSheet.create({
   },
   pressed: {
     backgroundColor: "blue",
-    width: "100%",
+    width: '100%',
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderRadius: 5,
-    marginVertical: 20,
+    marginVertical: 20
   },
   buttonText: {
     color: "white",
     fontWeight: "500",
     fontSIze: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
   error: {
     textAlign: "center",
     color: "red",
     fontWeight: "400",
-    marginVertical: 10,
+    marginVertical:10
   },
 });
 
-export default Login;
+export default Signup;

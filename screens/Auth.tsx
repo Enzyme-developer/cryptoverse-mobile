@@ -9,8 +9,8 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
+import Login from "../components/auth/Login";
+import Signup from "../components/auth/Signup";
 
 const Auth = () => {
   const [tab, setTab] = useState("login");

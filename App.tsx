@@ -1,14 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import Nav from "./components/Nav";
+import Nav from "./components/Navbar/Nav";
 import Auth from "./screens/Auth";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <Auth />
-      {/* <Nav /> */}
+      {/* <Auth /> */}
+      <Nav />
     </SafeAreaView>
   );
 }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#fff",
-    minHeight: '100%',
-    minWidth: '100%'
+    minHeight: "100%",
+    minWidth: "100%",
   },
 });
