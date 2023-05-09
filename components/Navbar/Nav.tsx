@@ -21,7 +21,7 @@ const Nav = () => {
             <Pressable>
               <Image
                 style={styles.user}
-                source={require("../assets/avatar.png")}
+                source={require("../../assets/avatar.png")}
               />
             </Pressable>
           </Signout>

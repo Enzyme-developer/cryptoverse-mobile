@@ -16,7 +16,7 @@ const SignOut = ({children}: any) => {
   };
   return (
     <View style={styles.container}>
-      <Pressable style={styles.pressed} onPress={signout}>
+      <Pressable onPress={signout}>
         {/* <Text style={styles.buttonText}>Signout</Text> */}
         {children}
       </Pressable>
@@ -31,20 +31,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  pressed: {
-    backgroundColor: "blue",
-    width: "100%",
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 5,
-    marginVertical: 20,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "500",
-    fontSIze: 20,
-    textAlign: "center",
-  },
+  // pressed: {
+  //   backgroundColor: "blue",
+  //   width: "100%",
+  //   paddingVertical: 10,
+  //   paddingHorizontal: 30,
+  //   borderRadius: 5,
+  //   marginVertical: 20,
+  // },
+  // buttonText: {
+  //   color: "white",
+  //   fontWeight: "500",
+  //   fontSIze: 20,
+  //   textAlign: "center",
+  // },
 });
 
 export default SignOut;
