@@ -9,7 +9,7 @@ import {
 const Home = ({ navigation }: any) => {
   return (
     <View>
-      <Pressable onPress={() => navigation.navigate("Auth")}>
+      <Pressable onPress={() => navigation.navigate("Details")}>
         <Text>Home hjcgvhjklrbght</Text>
       </Pressable>
 

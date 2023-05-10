@@ -2,10 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  SafeAreaView,
-  Touchable,
-  Button,
   Pressable,
 } from "react-native";
 import { useState } from "react";
