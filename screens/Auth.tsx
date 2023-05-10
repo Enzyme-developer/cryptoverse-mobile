@@ -12,12 +12,18 @@ import { useState } from "react";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
 
-const Auth = () => {
+const Auth = ({ navigation }: any) => {
   const [tab, setTab] = useState("login");
 
   return (
     <View style={styles.container}>
-      <View style={styles.tab}>{tab == "login" ? <Login /> : <Signup />}</View>
+      <View style={styles.tab}>
+        {tab == "login" ? (
+          <Login navigation={navigation} />
+        ) : (
+          <Signup navigation={navigation} />
+        )}
+      </View>
 
       <View>
         {tab == "login" ? (
@@ -43,7 +49,6 @@ const Auth = () => {
 const styles = StyleSheet.create({
   tab: {
     flexDirection: "row",
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -53,6 +58,7 @@ const styles = StyleSheet.create({
     minHeight: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff",
   },
   pressed: {
     backgroundColor: "blue",

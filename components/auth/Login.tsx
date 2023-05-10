@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { auth } from "../../firebaseConfig";
 
-const Login = () => {
+const Login = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,6 +26,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigation.navigate("Home");
         setLoading(false);
       })
       .catch((error) => {
@@ -55,7 +56,6 @@ const Login = () => {
         secureTextEntry={true}
       />
 
-      {/* <Button title="Login" onPress={handleLogin} /> */}
       <Pressable onPress={handleLogin} style={styles.pressed}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>

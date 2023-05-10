@@ -1,10 +1,23 @@
-import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  Pressable,
+  Button,
+} from "react-native";
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   return (
-      <View>
-        Home
-      </View>
+    <View>
+      <Pressable onPress={() => navigation.navigate("Auth")}>
+        <Text>Home hjcgvhjklrbght</Text>
+      </Pressable>
+
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Go back Home" onPress={() => navigation.popToTop()} />
+    </View>
   );
 };
 

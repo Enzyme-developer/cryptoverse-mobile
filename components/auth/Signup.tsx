@@ -11,7 +11,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { useState } from "react";
 
-const Signup = () => {
+const Signup = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,6 +26,7 @@ const Signup = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigation.navigate("Auth");
         setLoading(false);
       })
       .catch((error) => {
@@ -91,23 +92,23 @@ const styles = StyleSheet.create({
   },
   pressed: {
     backgroundColor: "blue",
-    width: '100%',
+    width: "100%",
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderRadius: 5,
-    marginVertical: 20
+    marginVertical: 20,
   },
   buttonText: {
     color: "white",
     fontWeight: "500",
     fontSIze: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
   error: {
     textAlign: "center",
     color: "red",
     fontWeight: "400",
-    marginVertical:10
+    marginVertical: 10,
   },
 });
 
