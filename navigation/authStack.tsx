@@ -9,7 +9,7 @@ export default function AuthStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Auth" component={Auth} />
+        <Stack.Screen name="Auth" component={Auth} options={{ title: '' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

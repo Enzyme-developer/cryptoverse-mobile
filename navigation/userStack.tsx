@@ -10,7 +10,7 @@ export default function UserStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home} options={{ title: '' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

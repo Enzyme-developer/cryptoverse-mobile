@@ -2,8 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  SafeAreaView,
   Pressable,
   Button,
 } from "react-native";
